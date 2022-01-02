@@ -1,4 +1,4 @@
-
+import random
 class Enemy:
     def __init__(self, name, health, attack_power, attacks):
         self.name = name
@@ -7,7 +7,12 @@ class Enemy:
         self.attacks = attacks
     
     def enemy_attack(self):
-        
+        self.attack_keys_list = list(self.attacks)  #list of just the names of the attacks without their values
+        self.attack_values = list(self.attacks.values())
+        self.attack_index = random.randint(len(self.attack_keys_list))
+        print(f"The {self.name} lashes out with {self.attack_keys_list[self.attack_index]}.")
+        return self.attack_values[self.attack_index]
+
 
     def injured(self, attack_points):
         self.health -= attack_points
